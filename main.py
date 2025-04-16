@@ -1,5 +1,5 @@
 import sys
-from rembg import remove
+from rembg import remove, new_session
 from PIL import Image
 import io
 
@@ -14,16 +14,21 @@ def main():
     with open(input_path, "rb") as input_file:
         input_data = input_file.read()
 
-    result = remove(input_data)
+    # Use stable model with no alpha matting, no trimming
+    session = new_session("isnet-general-use")  # More conservative
 
-    # Open the result in memory as an image
+    result = remove(
+        input_data,
+        session=session,
+        alpha_matting=False,
+        only_mask=False,
+        post_process_mask=False
+    )
+
+    # Composite onto white background
     img = Image.open(io.BytesIO(result)).convert("RGBA")
-
-    # Create a white background image
     white_bg = Image.new("RGBA", img.size, (255, 255, 255, 255))
     composite = Image.alpha_composite(white_bg, img)
-
-    # Save as PNG (can also convert to RGB and save as JPG if needed)
     composite.save(output_path, format="PNG")
 
     print(f"Background removed. Result saved as {output_path}")
