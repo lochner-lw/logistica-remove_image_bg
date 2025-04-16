@@ -1,5 +1,7 @@
 import sys
 from rembg import remove
+from PIL import Image
+import io
 
 def main():
     if len(sys.argv) < 2:
@@ -12,16 +14,17 @@ def main():
     with open(input_path, "rb") as input_file:
         input_data = input_file.read()
 
-    result = remove(
-        input_data,
-        alpha_matting=True,
-        alpha_matting_foreground_threshold=240,
-        alpha_matting_background_threshold=10,
-        alpha_matting_erode_size=10
-    )
+    result = remove(input_data)
 
-    with open(output_path, "wb") as output_file:
-        output_file.write(result)
+    # Open the result in memory as an image
+    img = Image.open(io.BytesIO(result)).convert("RGBA")
+
+    # Create a white background image
+    white_bg = Image.new("RGBA", img.size, (255, 255, 255, 255))
+    composite = Image.alpha_composite(white_bg, img)
+
+    # Save as PNG (can also convert to RGB and save as JPG if needed)
+    composite.save(output_path, format="PNG")
 
     print(f"Background removed. Result saved as {output_path}")
 
