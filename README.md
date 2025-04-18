@@ -12,8 +12,8 @@ It wraps the `rembg` library and runs entirely offline using **ONNX Runtime**.
 
 ### 1. Clone & install
 ```bash
-git clone https://github.com/your‑org/logistica.git
-cd logistica
+git clone https://github.com/lochner-lw/logistica-remove_image_bg.git
+cd logistica-remove_image_bg
 ./install.sh         # sets up .venv and installs all dependencies
 ```
 
