@@ -1,1 +1,1 @@
-# logistica-remove_image_bg
+# Logistica / Remove Image Background Tool
