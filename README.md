@@ -1,6 +1,6 @@
 # Logistica – Remove Image Background Tool
 
-Logistica is a lightweight command‑line utility that turns any image into a PNG with a transparent background.  
+**LogisticaRIBT** is a lightweight command‑line utility that turns any image into a PNG with a transparent background.  
 It wraps the `rembg` library and runs entirely offline using **ONNX Runtime**.
 
 ## Prerequisites
