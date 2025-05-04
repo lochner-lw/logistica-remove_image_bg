@@ -1,7 +1,5 @@
 import sys
 from rembg import remove, new_session
-from PIL import Image
-import io
 
 def main():
     if len(sys.argv) < 2:
