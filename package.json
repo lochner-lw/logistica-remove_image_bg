@@ -1,0 +1,28 @@
+{
+  "name": "logistica-remove-image-bg",
+  "version": "1.0.0",
+  "description": "CLI tool that removes image backgrounds (offline) by wrapping the Python rembg library inside a NodeJS package.",
+  "bin": {
+    "logistica-ribt": "bin/ribt.js"
+  },
+  "scripts": {
+    "postinstall": "bash install.sh"
+  },
+  "keywords": [
+    "image",
+    "background",
+    "remove",
+    "rembg",
+    "cli",
+    "onnx"
+  ],
+  "author": "Logistica",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "execa": "^8.0.1"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
